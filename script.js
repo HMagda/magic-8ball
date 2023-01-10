@@ -1,4 +1,4 @@
-const ballImg = document.querySelector('.ball-img');
+const ballImg = document.querySelector('.ball-img > img');
 const questionInput = document.querySelector('.question-area > input');
 const answerField = document.querySelector('.answer');
 const errorField = document.querySelector('.error');
@@ -29,7 +29,12 @@ const answersArray = [
   'Very doubtful.',
 ];
 
-ballImg.addEventListener('click', getAndDisplayAnswer);
+ballImg.addEventListener('click', shakeBall);
+
+function shakeBall() {
+  ballImg.classList.add('shake-animation');
+  setTimeout(getAndDisplayAnswer, 1000);
+}
 
 function getAndDisplayAnswer() {
   checkQuestion();
@@ -37,7 +42,6 @@ function getAndDisplayAnswer() {
 
 function pickAndDisplayRandomAnswer() {
   const answer = answersArray[Math.floor(Math.random() * answersArray.length)];
-  console.log(answer);
   answerField.innerHTML = `The answer is: ${answer}`;
 }
 
@@ -51,9 +55,11 @@ function checkQuestion() {
       errorField.textContent = '';
     } else {
       answerField.innerHTML = '';
-      errorField.textContent = 'Your question should end with a question mark ("?")';
+      errorField.textContent =
+        'Your question should end with a question mark ("?")';
     }
   } else {
     errorField.textContent = 'Ask a question';
   }
+  ballImg.classList.remove('shake-animation');
 }
