@@ -38,19 +38,22 @@ function getAndDisplayAnswer() {
 function pickAndDisplayRandomAnswer() {
   const answer = answersArray[Math.floor(Math.random() * answersArray.length)];
   console.log(answer);
-  answerField.innerHTML = answer;
+  answerField.innerHTML = `The answer is: ${answer}`;
 }
 
 function checkQuestion() {
   const questionStr = questionInput.value;
   const stringLength = questionStr.length;
 
-  if (questionStr.charAt(stringLength - 1) == '?') {
-    pickAndDisplayRandomAnswer();
-    errorField.textContent = '';
+  if (stringLength >= 3) {
+    if (questionStr.charAt(stringLength - 1) === '?') {
+      pickAndDisplayRandomAnswer();
+      errorField.textContent = '';
+    } else {
+      answerField.innerHTML = '';
+      errorField.textContent = 'Your question should end with a question mark ("?")';
+    }
   } else {
-    answerField.innerHTML = '';
-    errorField.textContent =
-      'Your question should end with a question mark ("?")';
+    errorField.textContent = 'Ask a question';
   }
 }
