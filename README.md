@@ -5,7 +5,7 @@ The Magic 8-Ball is a toy used for fortune-telling or seeking advice. The ball h
 # Getting Started
 
 1. Clone or download the repository
-2. Open index.html file in your preferred web browser. You can do this by either double-clicking the file or dragging and dropping it into the browser window.
+2. Open `index.html` file in your preferred web browser. You can do this by either double-clicking the file or dragging and dropping it into the browser window.
 
 # How to use it
 
