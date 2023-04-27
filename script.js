@@ -47,19 +47,17 @@ function pickAndDisplayRandomAnswer() {
 
 function checkQuestion() {
   const questionStr = questionInput.value;
-  const stringLength = questionStr.length;
 
-  if (stringLength >= 3) {
-    if (questionStr.charAt(stringLength - 1) === '?') {
-      pickAndDisplayRandomAnswer();
-      errorField.textContent = '';
-    } else {
-      answerField.innerHTML = '';
-      errorField.textContent =
-        'Your question should end with a question mark ("?")';
-    }
+  if (questionStr.length >= 3 && questionStr.endsWith('?')) {
+    pickAndDisplayRandomAnswer();
+    errorField.textContent = '';
   } else {
-    errorField.textContent = 'Ask a question';
+    answerField.innerHTML = '';
+    errorField.textContent =
+      questionStr.length >= 3
+        ? 'Your question should end with a question mark ("?")'
+        : 'Ask a question';
   }
+
   ballImg.classList.remove('shake-animation');
 }
